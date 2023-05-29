@@ -1,0 +1,36 @@
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">{{authService.authenticatedUser.username}}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a routerLink="/admin/accounts" routerLinkActive="selected-item" class="nav-link m-1 sidebar">Accounts</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Customers
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/admin/customers">Search customers</a></li>
+            <li *ngIf="authService.hasRole('ADMIN')"><a class="dropdown-item" routerLink="/admin/new-customer">New
+                customer</a></li>
+          </ul>
+        </li>
+
+      </ul>
+      <ul class="d-flex navbar-nav  ">
+        <li>
+          <button class="btn" style="color: rgb(255, 255, 255);background-color:rgb(255, 93, 93) ;"
+            (click)="handleLogout()">Signout</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
